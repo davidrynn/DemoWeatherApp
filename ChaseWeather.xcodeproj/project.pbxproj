@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		222E2FA72AC89184007C7D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FA62AC89184007C7D70 /* AppDelegate.swift */; };
 		222E2FA92AC89184007C7D70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FA82AC89184007C7D70 /* SceneDelegate.swift */; };
-		222E2FAB2AC89184007C7D70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FAA2AC89184007C7D70 /* ViewController.swift */; };
-		222E2FAE2AC89184007C7D70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222E2FAC2AC89184007C7D70 /* Main.storyboard */; };
 		222E2FB02AC89185007C7D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222E2FAF2AC89185007C7D70 /* Assets.xcassets */; };
 		222E2FB32AC89185007C7D70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222E2FB12AC89185007C7D70 /* LaunchScreen.storyboard */; };
 		222E2FBE2AC89185007C7D70 /* ChaseWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FBD2AC89185007C7D70 /* ChaseWeatherTests.swift */; };
 		222E2FC82AC89185007C7D70 /* ChaseWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FC72AC89185007C7D70 /* ChaseWeatherUITests.swift */; };
 		222E2FCA2AC89185007C7D70 /* ChaseWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FC92AC89185007C7D70 /* ChaseWeatherUITestsLaunchTests.swift */; };
+		222E2FD72AC891F7007C7D70 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FD62AC891F7007C7D70 /* SearchViewController.swift */; };
+		222E2FD92AC89217007C7D70 /* HttpsDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FD82AC89217007C7D70 /* HttpsDownloader.swift */; };
+		222E2FDB2AC89238007C7D70 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FDA2AC89238007C7D70 /* NetworkClient.swift */; };
+		222E2FDF2AC892B4007C7D70 /* WeatherAppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FDE2AC892B4007C7D70 /* WeatherAppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +41,6 @@
 		222E2FA32AC89184007C7D70 /* ChaseWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChaseWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222E2FA62AC89184007C7D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222E2FA82AC89184007C7D70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		222E2FAA2AC89184007C7D70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		222E2FAD2AC89184007C7D70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		222E2FAF2AC89185007C7D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		222E2FB22AC89185007C7D70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		222E2FB42AC89185007C7D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +49,10 @@
 		222E2FC32AC89185007C7D70 /* ChaseWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaseWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		222E2FC72AC89185007C7D70 /* ChaseWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseWeatherUITests.swift; sourceTree = "<group>"; };
 		222E2FC92AC89185007C7D70 /* ChaseWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		222E2FD62AC891F7007C7D70 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		222E2FD82AC89217007C7D70 /* HttpsDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsDownloader.swift; sourceTree = "<group>"; };
+		222E2FDA2AC89238007C7D70 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		222E2FDE2AC892B4007C7D70 /* WeatherAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +104,13 @@
 			isa = PBXGroup;
 			children = (
 				222E2FA62AC89184007C7D70 /* AppDelegate.swift */,
-				222E2FA82AC89184007C7D70 /* SceneDelegate.swift */,
-				222E2FAA2AC89184007C7D70 /* ViewController.swift */,
-				222E2FAC2AC89184007C7D70 /* Main.storyboard */,
 				222E2FAF2AC89185007C7D70 /* Assets.xcassets */,
-				222E2FB12AC89185007C7D70 /* LaunchScreen.storyboard */,
+				222E2FDD2AC892A6007C7D70 /* Enums */,
 				222E2FB42AC89185007C7D70 /* Info.plist */,
+				222E2FB12AC89185007C7D70 /* LaunchScreen.storyboard */,
+				222E2FDC2AC89299007C7D70 /* Network */,
+				222E2FA82AC89184007C7D70 /* SceneDelegate.swift */,
+				222E2FE02AC892F8007C7D70 /* Views */,
 			);
 			path = ChaseWeather;
 			sourceTree = "<group>";
@@ -125,6 +130,31 @@
 				222E2FC92AC89185007C7D70 /* ChaseWeatherUITestsLaunchTests.swift */,
 			);
 			path = ChaseWeatherUITests;
+			sourceTree = "<group>";
+		};
+		222E2FDC2AC89299007C7D70 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				222E2FD82AC89217007C7D70 /* HttpsDownloader.swift */,
+				222E2FDA2AC89238007C7D70 /* NetworkClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		222E2FDD2AC892A6007C7D70 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				222E2FDE2AC892B4007C7D70 /* WeatherAppError.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		222E2FE02AC892F8007C7D70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				222E2FD62AC891F7007C7D70 /* SearchViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +263,6 @@
 			files = (
 				222E2FB32AC89185007C7D70 /* LaunchScreen.storyboard in Resources */,
 				222E2FB02AC89185007C7D70 /* Assets.xcassets in Resources */,
-				222E2FAE2AC89184007C7D70 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222E2FAB2AC89184007C7D70 /* ViewController.swift in Sources */,
 				222E2FA72AC89184007C7D70 /* AppDelegate.swift in Sources */,
+				222E2FD72AC891F7007C7D70 /* SearchViewController.swift in Sources */,
 				222E2FA92AC89184007C7D70 /* SceneDelegate.swift in Sources */,
+				222E2FD92AC89217007C7D70 /* HttpsDownloader.swift in Sources */,
+				222E2FDB2AC89238007C7D70 /* NetworkClient.swift in Sources */,
+				222E2FDF2AC892B4007C7D70 /* WeatherAppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +329,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		222E2FAC2AC89184007C7D70 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				222E2FAD2AC89184007C7D70 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		222E2FB12AC89185007C7D70 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +466,6 @@
 				INFOPLIST_FILE = ChaseWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +493,6 @@
 				INFOPLIST_FILE = ChaseWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
