@@ -9,11 +9,21 @@ import Foundation
 
 let baseUrl = "openweathermap.org"
 
-struct DataService {
+protocol DataServicing {
+    func fetchWeather(city: String) async throws -> Weather
+}
+
+struct DataService: DataServicing {
     let network: Network
+    // not great - we should be storying the keys on a server, not on the app,
+    // but for the application process, keeping it here.
+    private let key = "b6e4e11b74afe8f276efa54645156320"
+    init(network: Network = NetworkClient()) {
+        self.network = network
+    }
     
     func fetchWeather(city: String) async throws -> Weather {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid="
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)&units=imperial"
         guard let url = URL(string: urlString) else { throw WeatherAppError.invalidURL }
         return try await network.loadData(url: url)
     }
@@ -27,5 +37,15 @@ struct DataService {
         
 //https://openweathermap.org/img/wn/10d@2x.png
 }
+
+struct MockDataService: DataServicing {
+    func fetchWeather(city: String) async throws -> Weather {
+        let coord = Coordinate(lon: 1024.0, lat: 980.0)
+        let main = Main(temp: 98, feelsLike: 99, tempMin: 0, tempMax: 120, pressure: 180, humidity: 70)
+        return Weather(coord: coord, weather: [], base: "station", main: main, visibility: 1000, name: "Boise")
+    }
+
+}
+//https://api.openweathermap.org/data/2.5/weather?q=oslo&appid=b6e4e11b74afe8f276efa54645156320
 
 

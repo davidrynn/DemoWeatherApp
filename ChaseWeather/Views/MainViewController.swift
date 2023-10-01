@@ -5,6 +5,7 @@
 //  Created by David Rynn on 9/30/23.
 //
 
+import SwiftUI
 import UIKit
 
 class MainViewController: UIViewController {
@@ -15,12 +16,17 @@ class MainViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    lazy var main: UIView = {
+        let viewModel = MainWeatherViewModel(dataService: DataService())
+        let view = MainWeatherView(viewModel: viewModel)
+        let vc = UIHostingController(rootView: view)
+        return vc.view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        view.backgroundColor = .white
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,12 +34,9 @@ class MainViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(testLabel)
+        view.addSubview(main)
         
-        NSLayoutConstraint.activate([
-            testLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            testLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        ])
+        main.frame = view.frame
     }
     
 
