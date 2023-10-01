@@ -7,10 +7,11 @@
 
 import Foundation
 
-let baseUrl = "openweathermap.org"
+let baseUrl = "https://openweathermap.org"
 
 protocol DataServicing {
-    func fetchWeather(city: String) async throws -> Weather
+    func fetchWeather(city: String, units: Units) async throws -> Weather
+    func buildIconUrl(iconId: String) -> URL?
 }
 
 struct DataService: DataServicing {
@@ -22,14 +23,14 @@ struct DataService: DataServicing {
         self.network = network
     }
     
-    func fetchWeather(city: String) async throws -> Weather {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)&units=imperial"
+    func fetchWeather(city: String, units: Units) async throws -> Weather {
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)&units=\(units.rawValue)"
         guard let url = URL(string: urlString) else { throw WeatherAppError.invalidURL }
         return try await network.loadData(url: url)
     }
     
-    private func buildIconUrl(iconId: String) -> URL? {
-        let img = "img/wn/"
+    func buildIconUrl(iconId: String) -> URL? {
+        let img = "/img/wn/"
         let ending = "@2x.png"
         let urlString = baseUrl + img + iconId + ending
         return URL(string: urlString)
@@ -39,10 +40,14 @@ struct DataService: DataServicing {
 }
 
 struct MockDataService: DataServicing {
-    func fetchWeather(city: String) async throws -> Weather {
+    func fetchWeather(city: String, units: Units) async throws -> Weather {
         let coord = Coordinate(lon: 1024.0, lat: 980.0)
         let main = Main(temp: 98, feelsLike: 99, tempMin: 0, tempMax: 120, pressure: 180, humidity: 70)
         return Weather(coord: coord, weather: [], base: "station", main: main, visibility: 1000, name: "Boise")
+    }
+    
+    func buildIconUrl(iconId: String) -> URL? {
+        return nil
     }
 
 }

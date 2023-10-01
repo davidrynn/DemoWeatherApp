@@ -24,6 +24,7 @@
 		222E2FEF2AC8E85A007C7D70 /* MainWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FEE2AC8E85A007C7D70 /* MainWeatherView.swift */; };
 		222E2FF12AC8E8BE007C7D70 /* MainWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FF02AC8E8BE007C7D70 /* MainWeatherViewModel.swift */; };
 		222E2FF32AC8E954007C7D70 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FF22AC8E954007C7D70 /* LoadingState.swift */; };
+		222E2FF52AC909CE007C7D70 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E2FF42AC909CE007C7D70 /* Units.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		222E2FEE2AC8E85A007C7D70 /* MainWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherView.swift; sourceTree = "<group>"; };
 		222E2FF02AC8E8BE007C7D70 /* MainWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherViewModel.swift; sourceTree = "<group>"; };
 		222E2FF22AC8E954007C7D70 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		222E2FF42AC909CE007C7D70 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				222E2FDE2AC892B4007C7D70 /* WeatherAppError.swift */,
 				222E2FF22AC8E954007C7D70 /* LoadingState.swift */,
+				222E2FF42AC909CE007C7D70 /* Units.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				222E2FA72AC89184007C7D70 /* AppDelegate.swift in Sources */,
+				222E2FF52AC909CE007C7D70 /* Units.swift in Sources */,
 				222E2FE32AC896E3007C7D70 /* DataService.swift in Sources */,
 				222E2FA92AC89184007C7D70 /* SceneDelegate.swift in Sources */,
 				222E2FD92AC89217007C7D70 /* HttpsDownloader.swift in Sources */,
