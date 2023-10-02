@@ -36,15 +36,24 @@ private extension MainWeatherView {
     var main: some View {
         VStack {
             picker
+            icon
             Spacer()
             Text("Unit selection: \(viewModel.units.rawValue)")
+            Text("Temperature: \(viewModel.temperature)")
+            humidity
             textField
-            Text("\(viewModel.temperature)")
-            AsyncImage(url: viewModel.iconURL)
-                .frame(width: 80, height: 80)
-                .accessibilityHidden(true)
             Spacer()
         }
+    }
+    
+    var icon: some View {
+        CacheAsyncImage(url: viewModel.iconURL) { image in
+            image.resizable()
+        } placeholder: {
+            ProgressView()
+        }
+        .frame(width: 120, height: 120)
+        .accessibilityHidden(true)
     }
     
     var picker: some View {
@@ -63,7 +72,7 @@ private extension MainWeatherView {
                 .border(Color.secondary, width: 1)
             Button("Go", action: {
                 Task {
-                    await viewModel.getWeather()
+                    await viewModel.getWeatherByCity()
                 }
             })
             .tint(.green)
@@ -81,16 +90,25 @@ private extension MainWeatherView {
     
     var errorMessage: some View {
         VStack {
-            Text("Error!")
+            let message = viewModel.errorMessage ?? ""
+            Text("Error! \(message)")
             Button("Reset") {
                 viewModel.reset()
             }
+        }
+    }
+    
+    @ViewBuilder
+    var humidity: some View {
+        if let humidity = viewModel.humidity {
+            Text("Humidity: \(humidity)")
+                .padding()
         }
     }
 }
 
 struct MainWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        MainWeatherView(viewModel: MainWeatherViewModel(dataService: MockDataService()))
+        MainWeatherView(viewModel: MainWeatherViewModel(dataService: MockDataService(), locationService: LocationService()))
     }
 }

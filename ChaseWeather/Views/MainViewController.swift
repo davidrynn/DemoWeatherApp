@@ -5,20 +5,15 @@
 //  Created by David Rynn on 9/30/23.
 //
 
+import CoreLocation
 import SwiftUI
 import UIKit
 
-class MainViewController: UIViewController {
-    
-    lazy var testLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Test"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+final class MainViewController: UIViewController {
     
     lazy var main: UIView = {
-        let viewModel = MainWeatherViewModel(dataService: DataService())
+        let locationService = LocationService()
+        let viewModel = MainWeatherViewModel(dataService: DataService(), locationService: locationService)
         let view = MainWeatherView(viewModel: viewModel)
         let vc = UIHostingController(rootView: view)
         return vc.view
@@ -34,20 +29,8 @@ class MainViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(main)
-        
+        view.addSubview(main)        
         main.frame = view.frame
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

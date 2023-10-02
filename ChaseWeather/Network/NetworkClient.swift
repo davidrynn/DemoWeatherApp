@@ -20,7 +20,7 @@ protocol Network {
 /// The network client handles all direct networking activity. As an `actor` we ensure that it is thread safe and only one call will be made at one time, queuing the rest of the calls.
 /// @Description
 /// For more on actors, see https://developer.apple.com/tutorials/app-dev-training/managing-structured-concurrency
-final actor NetworkClient: Network {
+final class NetworkClient: Network {
     
     // MARK: - Properties
     private var decoder: JSONDecoder = JSONDecoder()

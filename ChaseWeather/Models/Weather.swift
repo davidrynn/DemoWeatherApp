@@ -6,8 +6,14 @@
 //
 
 import Foundation
+import CoreLocation
 
-struct Weather: Decodable {
+/// Main model decoded from API
+struct Weather: Decodable, Equatable {
+    static func == (lhs: Weather, rhs: Weather) -> Bool {
+        lhs.base == rhs.base && lhs.coord.lat == rhs.coord.lat && lhs.coord.lon == rhs.coord.lon && lhs.name == rhs.name
+    }
+    
     let coord: Coordinate
     let weather: [WeatherIcon]
     let base: String
@@ -27,6 +33,16 @@ struct WeatherIcon: Decodable {
 struct Coordinate: Decodable {
     let lon: CGFloat
     let lat: CGFloat
+    
+    init(lon: CGFloat, lat: CGFloat) {
+        self.lon = lon
+        self.lat = lat
+    }
+    
+    // Convenience for CoreLocation logic
+    init(location: CLLocation) {
+        self.init(lon: location.coordinate.longitude, lat: location.coordinate.latitude)
+    }
 }
 
 struct Main: Decodable {
@@ -45,7 +61,6 @@ struct Main: Decodable {
         case pressure
         case humidity
     }
-    
 }
 
 //https://openweathermap.org/img/wn/10d@2x.png
