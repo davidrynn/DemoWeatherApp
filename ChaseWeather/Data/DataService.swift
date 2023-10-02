@@ -11,7 +11,9 @@ let baseUrl = "https://openweathermap.org"
 
 protocol DataServicing {
     func fetchWeather(city: String, units: Units) async throws -> Weather
+    func fetchWeather(coordinate: Coordinate, units: Units) async throws -> Weather
     func buildIconUrl(iconId: String) -> URL?
+    func saveCityDefaults(_ city: String)
 }
 
 struct DataService: DataServicing {
@@ -29,22 +31,42 @@ struct DataService: DataServicing {
         return try await network.loadData(url: url)
     }
     
+    func fetchWeather(coordinate: Coordinate, units: Units) async throws -> Weather {
+    }
+
+    
     func buildIconUrl(iconId: String) -> URL? {
         let img = "/img/wn/"
         let ending = "@2x.png"
         let urlString = baseUrl + img + iconId + ending
         return URL(string: urlString)
     }
+    
+    func saveCityDefaults(_ city: String) {
+        let key = UserDefaultsKeys.city.rawValue
+        UserDefaults.standard.set(city, forKey: key)
+    }
         
 //https://openweathermap.org/img/wn/10d@2x.png
 }
 
 struct MockDataService: DataServicing {
+    func saveCityDefaults(_ city: String) {
+        return
+    }
+    
     func fetchWeather(city: String, units: Units) async throws -> Weather {
         let coord = Coordinate(lon: 1024.0, lat: 980.0)
         let main = Main(temp: 98, feelsLike: 99, tempMin: 0, tempMax: 120, pressure: 180, humidity: 70)
         return Weather(coord: coord, weather: [], base: "station", main: main, visibility: 1000, name: "Boise")
     }
+    
+    func fetchWeather(coordinate: Coordinate, units: Units) async throws -> Weather {
+        let coord = Coordinate(lon: 1024.0, lat: 980.0)
+        let main = Main(temp: 98, feelsLike: 99, tempMin: 0, tempMax: 120, pressure: 180, humidity: 70)
+        return Weather(coord: coord, weather: [], base: "station", main: main, visibility: 1000, name: "Boise")
+    }
+
     
     func buildIconUrl(iconId: String) -> URL? {
         return nil
