@@ -63,6 +63,11 @@ private extension MainWeatherView {
             }
         }
         .pickerStyle(.segmented)
+        .onChange(of: viewModel.units) { _ in
+            Task {
+                await viewModel.getWeatherByCity()
+            }
+        }
     }
     
     var textField: some View {
